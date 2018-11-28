@@ -25,11 +25,11 @@ class Boton extends React.Component{
         return () => this.setState(state => ({count: state.count - 1}))
     }
 
-    // resetear = () => this.setState(state => ({count: 0}))
+    resetear = () => this.setState(state => ({count: 0}))
 
-    resetear(){
-        return () => this.setState(state => ({count: 0}))
-    }
+    // resetear(){
+    //     return () => this.setState(state => ({count: 0}))
+    // }
 
     contador = () => {
         if(this.state.count == 0){
@@ -44,7 +44,7 @@ class Boton extends React.Component{
                 <h1>{this.contador()}</h1>
                 <button onClick={this.sumar()}>Incrementar</button>
                 <button onClick={this.resta()}>Reducir</button>
-                <button onClick={this.resetear()}>Resetear</button>
+                <button onClick={this.resetear}>Resetear</button>
                 {/* <h1>{this.props.aaa}</h1> */}
             </div>
         )
