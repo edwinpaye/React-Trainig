@@ -15,7 +15,7 @@ class FormController extends Component {
                     value: ''}
         },{
             label: 'Apellido',
-            props: {type : 'password',
+            props: {type : 'range',
                     name: 'apellido',
                     value: ''}
         }]
