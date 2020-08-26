@@ -18,20 +18,18 @@ class FormController extends Component {
         }]
     }
     handleChange = (event, i) => {
-        this.setState({
-            arr: this.setValue(event, i)
+        const {value} = event.target
+        this.setState(state => {
+            state.arr[i].props.value = value
+            return state
         })
     }
-    // componentDidMount(){
-    //     this.setState({
-    //         data: this.state.arr.reduce((json, data)=>{json[data.props.name] = data.props.value; return json}, {}),
-    //     })
-    // }
-    setValue(event, i){
-        let arr = [...this.state.arr]
-        arr[i].props.value = event.target.value
-        return arr
-    }
+
+    getDataJson = () => this.state.arr.reduce((json, data) => {
+            json[data.props.name] = data.props.value;
+            return json
+        }, {})
+    
 
     render(){
         return (<>
@@ -40,7 +38,7 @@ class FormController extends Component {
                     onChange = {this.handleChange} 
                 />
             </form>
-            <button onClick = {()=>console.log([...this.state.arr])}>Test State</button>
+            <button onClick = {()=>console.log(this.getDataJson())}>Test State</button>
         </>);   
     }
 } 
