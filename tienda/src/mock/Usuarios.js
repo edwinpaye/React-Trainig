@@ -19,18 +19,21 @@ export const desc2 = [
 ];
 
 export const arr = [{
+    legend: '',
     label: 'Nombre: ',
     element: 'input',
     props: {type : 'file',
             name: 'nombre',
             value: ''}
 },{
+    legend: '',
     label: 'Apellido: ',
     element: 'input',
     props: {type : 'range',
             name: 'apellido',
             value: 10}
 },{
+    legend: '',
     label: 'Seleccione: ',
     element: 'select',
     props: {name: 'select',
@@ -40,6 +43,7 @@ export const arr = [{
                 'html5',
                 'JavaScript']}
 },{
+    legend: '',
     label: 'Comentario: ',
     element: 'textarea',
     props: {name: 'comentario',

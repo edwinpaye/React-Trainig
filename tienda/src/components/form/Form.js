@@ -31,10 +31,11 @@ class Form extends Component {
     render(){
         return (<>
             <form onSubmit = {e => {e.preventDefault(); this.props.submit(this.getDataJson())}}>
-                {this.state.arr.map( (data, i) => (<div key = {i}>
+                {this.state.arr.map( (data, i) => <fieldset key = {i}>
+                    {data.legend && <legend>{data.legend}</legend>}
                     {data.label && <label>{data.label}</label>}
                     {EF[data.element]({...data.props, onChange: e => this.handleChange(e, i)})}
-                </div>))}
+                </fieldset>)}
                 <button type="submit">On Submit</button>
                 <button type='reset' onClick = {()=>this.setState({arr: (JSON.parse(JSON.stringify(this.props.dataArray)))})}>Reset</button>
             </form>

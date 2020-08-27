@@ -9,6 +9,13 @@ class FormController extends Component {
     render(){
         return (<>
             <CF.form dataArray = {arr} submit = {console.log}/>
+            {/* <form action="" method="post">
+                <fieldset>
+                    <legend>Título</legend>
+                    <input type="radio" name="radio" id="radio"/> 
+                    <label htmlFor="radio">Clic aquí</label>
+                </fieldset>
+            </form> */}
         </>);   
     }
 }
