@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import EF from './ElementFactory';
 
 class Form extends Component {
 
     state = {
-        arr: [],
-        select: '',
-        textarea: ''
+        arr: []
     }
 
     handleChange = (event, i) => {
@@ -24,33 +23,20 @@ class Form extends Component {
     )
 
     componentDidMount(){
-        this.setState({arr: [...this.props.dataArray]})
-    }
-
-    changeSelect = e => {
-        this.setState({...this.state, [e.target.name]: e.target.value})
+        this.setState({arr: (JSON.parse(JSON.stringify(this.props.dataArray)))})
     }
 
     render(){
         return (<>
             <form onSubmit = {e => {e.preventDefault(); console.log(this.state)}}>
-                {this.state.arr.map( (data, i) => (<div key = {data.props.name}>
-                    <label>{data.label}</label>
-                    <input {...data.props} onChange = {e => this.handleChange(e, i)} /><br/>
+                {this.state.arr.map( (data, i) => (<div key = {i}>
+                    {data.label && <label>{data.label}</label>}
+                    {EF[data.element]({...data.props, onChange: e => this.handleChange(e, i)})}
                 </div>))}
-                <label>
-                    Pick your favorite flavor:
-                    <select value = {this.state.select} name="select" onChange = {this.changeSelect}>
-                        <option value=""></option>     
-                        <option value="value1">Value 1</option> 
-                        <option value="value2">Value 2</option>
-                        <option value="value3">Value 3</option>
-                    </select>
-                </label><br/>
-                <textarea value={this.state.textarea} name = 'textarea' onChange={this.changeSelect} /><br/>
                 <button type="submit">On Submit</button><br/>
+                <button type='reset' onClick = {()=>this.setState({arr: (JSON.parse(JSON.stringify(this.props.dataArray)))})}>Reset</button>
             </form>
-            <button onClick = {()=>this.props.submit(this.state.select)}>Ejecutar Submit</button>
+            <button onClick = {()=>this.props.submit(this.getDataJson())}>Ejecutar funcion Controller</button>
         </>);
     }
 }
