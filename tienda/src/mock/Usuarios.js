@@ -17,3 +17,31 @@ export const desc2 = [
     {id: '123', name: 'bufanda', stock: 1, description: 'tejido a mano'},
     {id: 'asda1231', name: 'chaleco', stock: 1, description: 'tejido a mano'}
 ];
+
+export const arr = [{
+    label: 'Nombre: ',
+    element: 'input',
+    props: {type : 'file',
+            name: 'nombre',
+            value: ''}
+},{
+    label: 'Apellido: ',
+    element: 'input',
+    props: {type : 'range',
+            name: 'apellido',
+            value: 10}
+},{
+    label: 'Seleccione: ',
+    element: 'select',
+    props: {name: 'select',
+            value: 'css3',
+            options: [
+                'css3',
+                'html5',
+                'JavaScript']}
+},{
+    label: 'Comentario: ',
+    element: 'textarea',
+    props: {name: 'comentario',
+            value: ''}
+}]
