@@ -23,20 +23,21 @@ class Form extends Component {
     )
 
     componentDidMount(){
-        this.setState({arr: (JSON.parse(JSON.stringify(this.props.dataArray)))})
+        this.setState(
+            {arr: (JSON.parse(JSON.stringify(this.props.dataArray)))}
+        )
     }
 
     render(){
         return (<>
-            <form onSubmit = {e => {e.preventDefault(); console.log(this.state)}}>
+            <form onSubmit = {e => {e.preventDefault(); this.props.submit(this.getDataJson())}}>
                 {this.state.arr.map( (data, i) => (<div key = {i}>
                     {data.label && <label>{data.label}</label>}
                     {EF[data.element]({...data.props, onChange: e => this.handleChange(e, i)})}
                 </div>))}
-                <button type="submit">On Submit</button><br/>
+                <button type="submit">On Submit</button>
                 <button type='reset' onClick = {()=>this.setState({arr: (JSON.parse(JSON.stringify(this.props.dataArray)))})}>Reset</button>
             </form>
-            <button onClick = {()=>this.props.submit(this.getDataJson())}>Ejecutar funcion Controller</button>
         </>);
     }
 }
