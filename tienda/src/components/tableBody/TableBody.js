@@ -13,9 +13,14 @@ export default function TableBody({todos, keys, method, index = false}){
     }
 
     return (<>
-        {todos.map((todo, i) => (
+        {index ? todos.map((todo, i) => (
             <tr key={i} onClick = {()=>{if(method != null) method(i)}}>
-                {index ? registryDataWithIndex(todo, i+1) : registryData(todo)}
+                {registryDataWithIndex(todo, i+1)}
+            </tr>
+        )) :
+        todos.map((todo, i) => (
+            <tr key={i} onClick = {()=>{if(method != null) method(i)}}>
+                {registryData(todo)}
             </tr>
         ))}
     </>);
