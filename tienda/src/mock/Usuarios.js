@@ -18,19 +18,63 @@ export const desc2 = [
     {id: 'asda1231', name: 'chaleco', stock: 1, description: 'tejido a mano'}
 ];
 
+export const usuario = [{
+    legend: '',
+    label: 'Nombre: ',
+    element: 'input',
+    props: {type : 'text',
+            name: 'userName',
+            value: ''}
+},{
+    legend: '',
+    label: 'Password: ',
+    element: 'input',
+    props: {type : 'text',
+            name: 'password',
+            value: ''}
+},{
+    legend: '',
+    label: 'Email: ',
+    element: 'input',
+    props: {type : 'email',
+            name: 'email',
+            value: ''}
+},{
+    legend: '',
+    label: 'Direccion: ',
+    element: 'input',
+    props: {type : 'text',
+            name: 'direccion',
+            value: ''}
+},{
+    legend: '',
+    label: 'Cargo: ',
+    element: 'input',
+    props: {type : 'text',
+            name: 'cargo',
+            value: ''}
+},{
+    legend: '',
+    label: 'C.I.: ',
+    element: 'input',
+    props: {type : 'number',
+            name: 'ci',
+            value: 0}
+}]
+
 export const arr = [{
     legend: '',
     label: 'Nombre: ',
     element: 'input',
-    props: {type : 'file',
-            name: 'nombre',
+    props: {type : 'text',
+            name: 'userName',
             value: ''}
 },{
     legend: '',
-    label: 'Apellido: ',
+    label: 'Rango: ',
     element: 'input',
     props: {type : 'range',
-            name: 'apellido',
+            name: 'range',
             value: 10}
 },{
     legend: '',

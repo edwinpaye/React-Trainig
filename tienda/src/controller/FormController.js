@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
 import CF from '../factory/ComponentFactory';
-import {arr} from '../mock/Usuarios';
+import {usuario} from '../mock/Usuarios';
+import Service from '../service/Service';
 
 class FormController extends Component {
 
-    state = {}
+    state = {
+        url: 'http://localhost:8080/usuario'
+    }
+
+    sendFormData = object => Service.post(
+        this.state.url,
+        resp=>{
+            alert(resp.message);
+            console.log(resp)
+        },
+        console.log,
+        object
+    )
 
     render(){
         return (<>
-            <CF.form dataArray = {arr} submit = {console.log}/>
+            <h1>Formulario</h1>
+            <CF.form dataArray = {usuario} submit = {this.sendFormData}/>
             {/* <form action="" method="post">
-                <fieldset>
-                    <legend>Título</legend>
-                    <input type="radio" name="radio" id="radio"/> 
-                    <label htmlFor="radio">Clic aquí</label>
-                </fieldset>
+                <input type="radio" name="radio" id="radio"/> 
+                <label htmlFor="radio">Clic aquí</label>
             </form> */}
-        </>);   
+        </>);
     }
 }
 

@@ -23,13 +23,17 @@ class Form extends Component {
     )
 
     componentDidMount(){
+        this.setPropsToState()
+    }
+
+    setPropsToState = () => {
         this.setState(
             {arr: (JSON.parse(JSON.stringify(this.props.dataArray)))}
         )
     }
 
     render(){
-        return (<>
+        return (
             <form onSubmit = {e => {e.preventDefault(); this.props.submit(this.getDataJson())}}>
                 {this.state.arr.map( (data, i) => <fieldset key = {i}>
                     {data.legend && <legend>{data.legend}</legend>}
@@ -37,9 +41,9 @@ class Form extends Component {
                     {EF[data.element]({...data.props, onChange: e => this.handleChange(e, i)})}
                 </fieldset>)}
                 <button type="submit">On Submit</button>
-                <button type='reset' onClick = {()=>this.setState({arr: (JSON.parse(JSON.stringify(this.props.dataArray)))})}>Reset</button>
+                <button type='reset' onClick = {this.setPropsToState}>Reset</button>
             </form>
-        </>);
+        );
     }
 }
 
