@@ -2,9 +2,7 @@ import React from 'react';
 
 export default function TableBody({todos, keys, method, index = false}){
 
-    const registryData = todo => keys.map(key => (
-        <td key = {key} >{todo[key]}</td>
-    ))
+    const registryData = todo => keys.map(key => <td key = {key} >{todo[key]}</td>)
 
     const registryDataWithIndex = (todo, i) => { 
         let arr = registryData(todo);
@@ -13,7 +11,7 @@ export default function TableBody({todos, keys, method, index = false}){
     }
 
     const setBodyContent = registryDataFunction => todos.map((todo, i) => (
-        <tr key={i} onClick = {()=>{method && method(i)}}>
+        <tr key={i} onDoubleClick = {()=>{method && method(i)}}>
             {registryDataFunction(todo, i+1)}
         </tr>
     ))

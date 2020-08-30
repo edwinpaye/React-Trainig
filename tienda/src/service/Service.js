@@ -37,6 +37,21 @@ const Service = {
         .catch(error)
     },
 
+    put: (url, success, error, object) => {
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(object)
+        }).then( resp => {
+            if (!resp.ok) throw resp
+            return resp.json()
+        }).then(success)
+        .catch(error)
+    },
+
     delete: (url, success, error) => {
         fetch(url, {
             method: 'DELETE'
