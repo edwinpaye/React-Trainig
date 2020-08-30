@@ -35,6 +35,16 @@ const Service = {
             return resp.json()
         }).then(success)
         .catch(error)
+    },
+
+    delete: (url, success, error) => {
+        fetch(url, {
+            method: 'DELETE'
+        }).then( resp => {
+            if (!resp.ok) throw resp
+            return resp.json()
+        }).then(success)
+        .catch(error)
     }
 }
 

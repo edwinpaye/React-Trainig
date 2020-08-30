@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CF from '../factory/ComponentFactory';
-import {usuario} from '../mock/Usuarios';
+import { usuario } from '../mock/Usuarios';
 import Service from '../service/Service';
 
 class FormController extends Component {
@@ -11,9 +11,8 @@ class FormController extends Component {
 
     sendFormData = object => Service.post(
         this.state.url,
-        resp=>{
+        resp => {
             alert(resp.message);
-            console.log(resp)
         },
         console.log,
         object
