@@ -12,8 +12,8 @@ const Service = {
     //     }
     // },
 
-    get: (url, success, error) => {
-        fetch(url)
+    request: (url, success, error, dataRequest) => {
+        fetch(url, dataRequest)
         .then(resp => {
             if (!resp.ok) throw resp
             return resp.json()
@@ -22,45 +22,35 @@ const Service = {
         .catch(error)
     },
 
-    post: (url, success, error, object) => {
-        fetch(url, {
+    get: (url, success, error) => request(url, success, error, {}),
+
+    post: (url, success, error, object) => request(
+        url, success, error, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(object)
-        }).then( resp => {
-            if (!resp.ok) throw resp
-            return resp.json()
-        }).then(success)
-        .catch(error)
-    },
+        }
+    ),
 
-    put: (url, success, error, object) => {
-        fetch(url, {
+    put: (url, success, error, object) => request( 
+        url, success, error, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(object)
-        }).then( resp => {
-            if (!resp.ok) throw resp
-            return resp.json()
-        }).then(success)
-        .catch(error)
-    },
+        }
+    ),
 
-    delete: (url, success, error) => {
-        fetch(url, {
+    delete: (url, success, error) => request(
+        url, success, error, {
             method: 'DELETE'
-        }).then( resp => {
-            if (!resp.ok) throw resp
-            return resp.json()
-        }).then(success)
-        .catch(error)
-    }
+        }
+    )
 }
 
 export default Service;
