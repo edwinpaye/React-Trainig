@@ -26,11 +26,16 @@ class TableController extends Component {
         );
     }
 
+    getObjectKeys = () => {
+        let keys = Object.keys(this.state.todos[0]);
+        keys.indexOf('id') <! 0 && keys.splice(keys.indexOf('id'), 1);
+        return keys;
+    }
+
     render(){
-        // titles.splice(0, 1);
         // titles.unshift('posicion');
-        const keys = this.state.todos.length !== 0 ? Object.keys(this.state.todos[0]) : [];
-        const titles = ['id', 'Nobre de Usuario', 'Password', 'Direccion', 'C.I.', 'Email', 'Cargo'];
+        const keys = this.state.todos.length !== 0 ? this.getObjectKeys() : [];
+        const titles = ['Nro.', 'Nobre de Usuario', 'Password', 'Direccion', 'C.I.', 'Email', 'Cargo'];
 
         return (
             <div>
@@ -40,7 +45,8 @@ class TableController extends Component {
                     componentFactory = {CF} 
                     todos = {this.state.todos}
                     keys = {keys}
-                    titles = {titles} 
+                    titles = {titles}
+                    index = {true}
                     dataFunction = {posicion => console.log(this.state.todos[posicion])}
                 />}
             </div>

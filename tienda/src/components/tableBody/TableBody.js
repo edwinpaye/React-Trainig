@@ -12,16 +12,13 @@ export default function TableBody({todos, keys, method, index = false}){
         return arr;
     }
 
+    const setBodyContent = registryDataFunction => todos.map((todo, i) => (
+        <tr key={i} onClick = {()=>{method && method(i)}}>
+            {registryDataFunction(todo, i+1)}
+        </tr>
+    ))
+
     return (<>
-        {index ? todos.map((todo, i) => (
-            <tr key={i} onClick = {()=>{if(method != null) method(i)}}>
-                {registryDataWithIndex(todo, i+1)}
-            </tr>
-        )) :
-        todos.map((todo, i) => (
-            <tr key={i} onClick = {()=>{if(method != null) method(i)}}>
-                {registryData(todo)}
-            </tr>
-        ))}
+        {index ? setBodyContent(registryDataWithIndex) : setBodyContent(registryData)}
     </>);
 }
