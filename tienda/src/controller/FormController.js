@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CF from '../factory/ComponentFactory';
 import { usuario } from '../mock/Usuarios';
-import Service from '../service/Service';
+import Serice from '../service/Service';
 
 class FormController extends Component {
 
@@ -9,7 +9,7 @@ class FormController extends Component {
         url: 'http://localhost:8080/usuario'
     }
 
-    sendFormData = object => Service.post(
+    sendFormData = object => Serice.post(
         this.state.url,
         resp => {
             alert(resp.message);

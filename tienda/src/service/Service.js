@@ -1,4 +1,4 @@
-const Service = {
+export default {
 
     // get: async (url, success, err) => {
     //     try{
@@ -22,35 +22,33 @@ const Service = {
         .catch(error)
     },
 
-    get: (url, success, error) => request(url, success, error, {}),
+    get(url, success, error){ this.request(url, success, error, {})},
 
-    post: (url, success, error, object) => request(
-        url, success, error, {
+    post(url, success, error, dataJson){
+        this.request( url, success, error, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(object)
-        }
-    ),
+            body: JSON.stringify(dataJson)
+        })
+    },
 
-    put: (url, success, error, object) => request( 
-        url, success, error, {
+    put(url, success, error, dataJson){
+        this.request(url, success, error, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(object)
-        }
-    ),
+            body: JSON.stringify(dataJson)
+        })
+    },
 
-    delete: (url, success, error) => request(
-        url, success, error, {
+    delete(url, success, error){
+        this.request(url, success, error, {
             method: 'DELETE'
-        }
-    )
+        })
+    }
 }
-
-export default Service;
